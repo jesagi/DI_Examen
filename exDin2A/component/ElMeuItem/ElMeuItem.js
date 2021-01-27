@@ -8,27 +8,21 @@ export class ElMeuItem extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            name:'Cereals amb xocolata',
-            description:'Cereals farcits de xocolata',
-            quantity:2,
-            category:'Cereals',
-            price:5,
-        };
     }
+
     render() {
         return (
             <View style={styles.component}>
                 <View style={styles.flex1}>
                     <View style={styles.flex2}>
-                        <Text>{this.state.name}</Text>
+                        <Text>{this.props.food.item.name}</Text>
                     </View>
                     <View style={styles.flex2}>
                         <View>
-                            <Text>{this.state.description}</Text>
+                            <Text>{this.props.food.item.description}</Text>
                         </View>
                         <View style={styles.flex3}>
-                            <Text>Preu: {this.state.price}</Text>
+                            <Text>Preu: {this.props.food.item.price}</Text>
                         </View>
                     </View>
                 </View>

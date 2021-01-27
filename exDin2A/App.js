@@ -15,6 +15,7 @@ import {
   View,
   Text,
   StatusBar,
+  FlatList,
 } from 'react-native';
 
 import {
@@ -31,11 +32,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name:'Cerealsambxocolata',
-        description:'Cerealsfarcitsdexocolata',
-        quantity:2,
-        category:'Cereals',
-        price:5,
+      food: [
+        {name: 'Cereals amb xocolata',
+        description: 'Cereals farcits de xocolata',
+        quantity: 2,
+        category: 'Cereals',
+        price: 5,
+      },{
+        name: 'Hamburgesa amb formatge',
+        description: 'Hamburgesa bona y saludable',
+        quantity: 1,
+        category: 'Hamburgueses',
+        price: 15,
+      },{
+        name: 'Aigua Mineral',
+        description: 'Aigua de un bassal de el Himalaya',
+        quantity: 1,
+        category: 'Aigua',
+        price: 5,
+      }],
     };
   }
   render() {
@@ -43,7 +58,12 @@ class App extends Component {
       <>
       <View style={styles.pantalla}>
         <Text>Llistat:</Text>
-        <ElMeuItem data={this.state} />
+        <FlatList
+           data={this.state.food} 
+           keyExtractor={(item, index)=>index.toString()}
+           style={{padding:5}}
+           renderItem={(item)=>(<ElMeuItem food={item}/>  )}
+           />
       </View>
       </>
     );
